@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @created 02/08/2020
  * @project poly-homestay-mai-la-ae
  */
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -26,5 +27,4 @@ public class HomeController {
     public String home(){
         return "index";
     }
-
 }
