@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 
@@ -14,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class HoaDon {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,10 +25,17 @@ public class HoaDon {
     @ManyToOne
     @JoinColumn(name = "maTaiKhoan")
     private TaiKhoan taiKhoan;
+
     private double gia;
 
-    @OneToMany
-    @JoinColumn(name = "maHoaDon")
-    private List<ChiTietHoaDon> chiTietHoaDons;
+    @Column(name = "date_booking")
+    private Timestamp dateBooking;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @OneToOne
+    @JoinColumn(name = "homeStayId")
+    private HomeStay homeStay;
 
 }

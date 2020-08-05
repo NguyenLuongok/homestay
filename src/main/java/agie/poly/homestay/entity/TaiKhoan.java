@@ -17,12 +17,13 @@ import java.util.List;
 public class TaiKhoan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-private Long id;
-private String tenTaiKhoan;
-private String matKhau;
-private String email;
-private String diaChi;
-@OneToMany
+    private Long id;
+    private String tenTaiKhoan;
+    private String matKhau;
+    private String email;
+    private String phoneNumber;
+    private String diaChi;
+    @OneToMany
     @JoinColumn(name = "maTaiKhoan")
-private List<HoaDon> hoaDon;
+    private List<HoaDon> hoaDon;
 }
