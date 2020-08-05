@@ -28,10 +28,9 @@ public class HomeStay {
     private String kieuHomeStay;
     private double soLuongPhong;
     private String tinhTrang;
+    private String khuVuc;
+
     @OneToMany
-    @JoinColumn(name = "maHomeStay")
-    private List<ChiTietHoaDon> chiTietHoaDons;
-    @OneToMany
-    @JoinColumn(name = "maHomeStay")
-    private List<KhuVuc> khuVucs;
+    @JoinColumn(name = "id")
+    private List<HoaDon> hoaDons;
 }
