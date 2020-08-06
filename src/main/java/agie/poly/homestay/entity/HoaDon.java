@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -28,8 +29,11 @@ public class HoaDon {
 
     private double gia;
 
-    @Column(name = "date_booking")
-    private Timestamp dateBooking;
+    @Column(name = "date_check_in")
+    private Date dateCheckIn;
+
+    @Column(name = "date_check_out")
+    private Date dateCheckOut;
 
     @Column(name = "phone_number")
     private String phoneNumber;

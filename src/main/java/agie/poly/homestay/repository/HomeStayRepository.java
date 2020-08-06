@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @project poly-homestay-mai-la-ae
  */
 public interface HomeStayRepository extends JpaRepository<HomeStay,Long> {
-
     Page<HomeStay> findAll(Pageable pageable);
+    Page<HomeStay> findAllBy(Pageable pageable);
 }

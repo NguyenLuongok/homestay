@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -29,8 +30,10 @@ public class HomeStay {
     private double soLuongPhong;
     private String tinhTrang;
     private String khuVuc;
-
+    private String hinhAnh;
+    private Date timeBookIn;
+    private Date timeBookOut;
     @OneToMany
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idHoaDon")
     private List<HoaDon> hoaDons;
 }

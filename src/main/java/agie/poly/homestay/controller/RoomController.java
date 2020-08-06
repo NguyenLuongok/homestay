@@ -22,19 +22,19 @@ public class RoomController {
 
     @Autowired
     private HomeStayRepository homeStayRepository;
-
+    //hiển thị danh sách kết quả tìm kiếm
     @GetMapping(value = {"", "/"})
-    public String room(Model model, @PageableDefault(size = 2,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
+    public String room(Model model, @PageableDefault(size = 1,sort = "id",direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("page",homeStayRepository.findAll(pageable));
         return "rooms";
     }
-
+    //hiển thị phòng theo id
     @GetMapping("/room-detail/{id}")
     public String roomDetail(@PathVariable Long id, Model model){
         model.addAttribute("room", homeStayRepository.findById(id).get());
         return "room-details";
     }
-
+    //đặt phòng
     @GetMapping("/booking")
     public String boocking(){
         return "booking";
