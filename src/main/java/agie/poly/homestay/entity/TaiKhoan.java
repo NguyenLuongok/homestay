@@ -23,6 +23,8 @@ public class TaiKhoan {
     private String email;
     private String phoneNumber;
     private String diaChi;
+    private String role;
+    private boolean active;
     @OneToMany
     @JoinColumn(name = "maTaiKhoan")
     private List<HoaDon> hoaDon;

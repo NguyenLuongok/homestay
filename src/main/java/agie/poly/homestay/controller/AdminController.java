@@ -2,6 +2,7 @@ package agie.poly.homestay.controller;
 
 import agie.poly.homestay.repository.HoaDonRepository;
 import agie.poly.homestay.repository.UserRepository;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,15 @@ public class AdminController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("receipt/")
+    @GetMapping("/receipt")
     public String receiptView(Model model){
         model.addAttribute("receipts",this.hoaDonRepository.findAll(Sort.by(Sort.Direction.DESC,"dateBooking")));
         return "/admin/receipt";
+    }
+
+    @GetMapping("/user")
+    public String userView(Model model){
+        model.addAttribute("users", this.userRepository.findAll(Sort.by(Sort.Direction.ASC,"id")));
+        return "admin/user";
     }
 }

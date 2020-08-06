@@ -177,6 +177,7 @@
                                     <th>Tên tài khoản</th>
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
+                                    <th>Quyền</th>
                                     <th>Trạng thái</th>
                                     <th>Tùy chọn</th>
                                 </tr>
@@ -186,17 +187,21 @@
                                     <th>Tên tài khoản</th>
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
+                                    <th>Quyền</th>
                                     <th>Trạng thái</th>
                                     <th>Tùy chọn</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <tr>
-                                    <th>Tên tài khoản</th>
-                                    <th>Email</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Trạng thái</th>
-                                    <th>Tùy chọn</th>
+                                <tr th:each="user : ${users}">
+                                    <th th:text="${user.tenTaiKhoan}"/>
+                                    <th th:text="${user.email}"/>
+                                    <th th:text="${user.diaChi}"/>
+                                    <th th:text="${user.role}"/>
+                                    <th th:text="${user.active}"/>
+                                    <th>
+                                        <a href="" class="btn">Chỉnh sửa</a>
+                                    </th>
                                 </tr>
                                 </tbody>
                             </table>
