@@ -96,10 +96,10 @@
     /*------------------
 		Date Picker
 	--------------------*/
-    $(".date-input").datepicker({
-        minDate: 0,
-        dateFormat: 'dd MM, yy'
-    });
+    // $(".date-input").datepicker({
+    //     minDate: 0,
+    //     dateFormat: 'MM/dd/yyy'
+    // });
 
     /*------------------
 		Nice Select

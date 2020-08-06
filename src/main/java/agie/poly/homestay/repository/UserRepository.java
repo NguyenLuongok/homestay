@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @project poly-homestay-mai-la-ae
  */
 public interface UserRepository extends JpaRepository<TaiKhoan,Long> {
+
 }
