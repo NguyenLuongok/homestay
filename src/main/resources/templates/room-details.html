@@ -185,7 +185,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="room-details-item">
-                        <img src="/front-end/img/room/room-details.jpg" alt="">
+                        <img th:src="${room.getHinhAnh()}" alt="">
                         <div class="rd-text">
                             <div class="rd-title">
                                 <h3 th:text="${room.tenHomeStay}"/>
@@ -197,7 +197,7 @@
                                         <i class="icon_star"></i>
                                         <i class="icon_star-half_alt"></i>
                                     </div>
-                                    <a th:href="@{/booking/{id}(id = ${room.id})}">Đặt phòng ngay</a>
+                                    <a th:href="@{/room-detail/{id}/book (id = ${room.id})}">Đặt phòng ngay</a>
                                 </div>
                             </div>
                             <h2 th:text="${room.gia} +' VND'"><span th:text="${room.kieuHomeStay}"/></h2>
@@ -239,29 +239,17 @@
                 <div class="col-lg-4">
                     <div class="room-booking">
                         <h3>Your Reservation</h3>
-                        <form action="#">
+                        <p th:text="${message}" style="color: red"></p>
+                        <form th:action="@{/room-detail/{id} (id = ${room.id})}" th:object="${checkObject}" method="post">
                             <div class="check-date">
                                 <label for="date-in">Check In:</label>
-                                <input type="text" class="date-input" id="date-in">
-                                <i class="icon_calendar"></i>
+                                <input type="date" id="date-in" th:field="*{checkIn}">
                             </div>
                             <div class="check-date">
                                 <label for="date-out">Check Out:</label>
-                                <input type="text" class="date-input" id="date-out">
-                                <i class="icon_calendar"></i>
+                                <input type="date" id="date-out" th:field="*{checkOut}">
                             </div>
-                            <div class="select-option">
-                                <label for="guest">Guests:</label>
-                                <select id="guest">
-                                    <option value="">3 Adults</option>
-                                </select>
-                            </div>
-                            <div class="select-option">
-                                <label for="room">Room:</label>
-                                <select id="room">
-                                    <option value="">1 Room</option>
-                                </select>
-                            </div>
+                            <input type="hidden" class="text" th:value="${room.id}" th:field="*{id}">
                             <button type="submit">Check Availability</button>
                         </form>
                     </div>

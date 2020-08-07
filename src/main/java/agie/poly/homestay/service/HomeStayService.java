@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@Service
+
 public interface HomeStayService {
     Iterable<HomeStay> finByAll(int adults, Date checkIn, Date checkOut, String address);
 }

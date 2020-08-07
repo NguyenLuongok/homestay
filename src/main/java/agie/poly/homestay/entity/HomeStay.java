@@ -31,8 +31,7 @@ public class HomeStay {
     private String tinhTrang;
     private String khuVuc;
     private String hinhAnh;
-    private Date timeBookIn;
-    private Date timeBookOut;
+
     @OneToMany
     @JoinColumn(name = "idHoaDon")
     private List<HoaDon> hoaDons;
