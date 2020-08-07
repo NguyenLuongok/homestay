@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 
   <meta charset="utf-8">
@@ -41,18 +42,16 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Login admin Homestay!</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" th:object="${user}" th:action="@{/admin/login}" th:method="post">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                      <input type="email" th:field="*{email}" class="form-control form-control-user" id="exampleInputEmail"
                         aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                      <input type="password" th:field="*{matKhau}" class="form-control form-control-user" id="exampleInputPassword"
                         placeholder="Password">
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                   </form>
 
                 </div>
