@@ -10,4 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserRepository extends JpaRepository<TaiKhoan,Long> {
     TaiKhoan findByEmailAndMatKhau(String email, String matKhau);
+    
+    TaiKhoan findByMatKhau(String matKhau);
 }

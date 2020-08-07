@@ -46,29 +46,22 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Trang chủ</span></a>
-      </li>
-
-      </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item active">
-        <a class="nav-link" href="receipt.html">
+        <a class="nav-link" th:href="@{/admin/user}">
           <i class="fas fa-fw fa-table"></i>
           <span>Tài khoản</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item active">
-        <a class="nav-link" href="receipt.html">
+        <a class="nav-link" th:href="@{/admin/home-stay}">
           <i class="fas fa-fw fa-table"></i>
           <span>Home stay</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item active">
-        <a class="nav-link" href="receipt.html">
+        <a class="nav-link" th:href="@{/admin/receipt}">
           <i class="fas fa-fw fa-table"></i>
           <span>Hóa đơn</span></a>
       </li>
@@ -137,14 +130,14 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${session.userPageAdmin.tenTaiKhoan}"/>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" th:href="@{/admin/user/{id} (id = ${session.userPageAdmin.id})}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                  Thông tin
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -178,9 +171,11 @@
                       <th>Giá</th>
                       <th>Mã code</th>
                       <th>Tên khách hàng</th>
+                      <th>Email</th>
                       <th>Thời gian đặt phòng</th>
+                      <th>Thời gian trả phòng</th>
                       <th>Số điện thoại</th>
-                      <th>Chi tiết</th>
+                      <th>Trạng thái</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -188,19 +183,25 @@
                       <th>Giá</th>
                       <th>Mã code</th>
                       <th>Tên khách hàng</th>
+                      <th>Email</th>
                       <th>Thời gian đặt phòng</th>
+                      <th>Thời gian trả phòng</th>
                       <th>Số điện thoại</th>
-                      <th>Chi tiết</th>
+                      <th>Trạng thái</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <tr th:each="receipt : ${receipts}">
-                     <td th:text="${receipt.gia} + 'VND'"/>
+                     <td th:text="${#numbers.formatInteger(receipt.gia,0,'COMMA')}+' VND'"/>
                       <td th:text="${receipt.maCode}"/>
-                      <td th:text="${#dates.format(receipt.dateBooking, 'dd-MM-yyyy HH:mm')}"/>
-                      <td th:text="${receipt.taiKhoan.tenTaiKhoan}"/>
+                      <td th:unless="receipt.taiKhoan == null" th:text="${receipt.taiKhoan.tenTaiKhoan}"/>
+                      <td th:if="receipt.taiKhoan == null" th:text="${receipt.tenKhachHang}"/>
+                      <td th:text="${receipt.email}"/>
+                      <td th:text="${#dates.format(receipt.dateCheckIn, 'dd-MM-yyyy HH:mm')}"/>
+                      <td th:text="${#dates.format(receipt.dateCheckIn, 'dd-MM-yyyy HH:mm')}"/>
                       <td th:text="${receipt.taiKhoan.phoneNumber}"/>
-                      <td><a th:href="@{/admin/receipt/{id}(id = ${receipt.id})}">Chi tiết</a></td>
+                      <td th:if="${receipt.status == true}"><a th:href="@{/admin/receipt/update-status/{id} (id = ${receipt.id})}" class="btn">Trả phòng</a></td>
+                      <td th:if="${receipt.status == false}"> Đã trả phòng</td>
                     </tr>
                    </tbody>
                 </table>
@@ -248,7 +249,7 @@
         <div class="modal-body">Đăng xuất làm cho bạn phải đăng nhập lại điều này rất phiền, hãy cân nhắc</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Không</button>
-          <a class="btn btn-primary" href="login.html">Đăng xuất</a>
+          <a class="btn btn-primary" th:href="@{/admin/logout}">Đăng xuất</a>
         </div>
       </div>
     </div>
