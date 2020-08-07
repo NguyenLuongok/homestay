@@ -9,8 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @project poly-homestay-mai-la-ae
  */
 public interface UserRepository extends JpaRepository<TaiKhoan,Long> {
-
-    TaiKhoan findByMatKhau(String matKhau);
-
     TaiKhoan findByEmailAndMatKhau(String email, String matKhau);
+    
+    TaiKhoan findByMatKhau(String matKhau);
 }

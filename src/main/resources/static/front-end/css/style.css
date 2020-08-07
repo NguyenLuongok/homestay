@@ -1462,6 +1462,18 @@ ul, ol {
 	font-weight: 500;
 	padding-left: 20px;
 }
+.room-booking form .text input {
+	width: 100%;
+	height: 50px;
+	border: 1px solid #ebebeb;
+	border-radius: 2px;
+	font-size: 16px;
+	color: #19191a;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding-left: 20px;
+}
+
 .room-booking form .check-date i {
 	color: #dfa974;
 	position: absolute;
@@ -1477,6 +1489,17 @@ ul, ol {
 	display: block;
 	margin-bottom: 10px;
 }
+
+.room-booking form .text {
+	margin-bottom: 15px;
+}
+.room-booking form .text label {
+	font-size: 14px;
+	color: #707079;
+	display: block;
+	margin-bottom: 10px;
+}
+
 .room-booking form .select-option .nice-select {
 	border-radius: 2px;
 	border: 1px solid #ebebeb;

@@ -7,10 +7,6 @@ import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.OffsetDateTime;
-import java.util.List;
-
 
 @Entity
 @Table(name = "hoadon")
@@ -23,6 +19,7 @@ public class HoaDon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String maCode;
 
     @ManyToOne
@@ -50,4 +47,19 @@ public class HoaDon {
     @JoinColumn(name = "homeStayId")
     private HomeStay homeStay;
 
+    private Date timeBookIn;
+
+    private Date timeBookOut;
+
+    public HoaDon(Long id,TaiKhoan taiKhoan,double gia,Date dateCheckIn,Date dateCheckOut,String tenKhachHang,
+                  String email,HomeStay homeStay) {
+        this.id=id;
+        this.taiKhoan=taiKhoan;
+        this.gia=gia;
+        this.dateCheckIn=dateCheckIn;
+        this.dateCheckOut=dateCheckOut;
+        this.tenKhachHang=tenKhachHang;
+        this.email=email;
+        this.homeStay=homeStay;
+    }
 }
